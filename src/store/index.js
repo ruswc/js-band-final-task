@@ -6,7 +6,7 @@ import { composeWithDevTools } from "redux-devtools-extension"
 import reducer from "../reducers"
 
 const persistConfig = {
-  key: "appBanda",
+  key: "JSBandInternship",
   storage,
   blackList: ["books"]
 }

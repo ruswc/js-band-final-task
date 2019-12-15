@@ -7,7 +7,7 @@ import axios from "axios"
 import App from "./App"
 import * as serviceWorker from "./serviceWorker"
 import "bootstrap/dist/css/bootstrap.css"
-import "./index.scss"
+import "./styles/index.scss"
 
 import createStore from "./store"
 
@@ -15,7 +15,7 @@ const token = localStorage.getItem("token")
 const { store, persistor } = createStore()
 
 if (token) {
-  axios.defaults.headers.common = { Authorization: `bearer ${token}` }
+  axios.defaults.headers.common = { Authorization: token }
 }
 
 ReactDOM.render(

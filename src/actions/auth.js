@@ -25,7 +25,7 @@ export const signIn = value => async dispatch => {
 
     if (token) {
       localStorage.setItem("token", token)
-      axios.defaults.headers.common = { Authorization: `bearer ${token}` }
+      axios.defaults.headers.common = { Authorization: token }
     }
 
     dispatch(setAuthSuccess({ username, avatar }))
