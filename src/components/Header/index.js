@@ -12,7 +12,7 @@ const Header = ({ isAuthenticated, user, cartCount, signOut }) => {
 
   return (
     <header>
-      {/*<nav className="navbar navbar-light bg-light mb-3 fixed-top">*/}
+      {/* <nav className="navbar navbar-light bg-light mb-3 fixed-top"> */}
       <nav className="navbar navbar-dark bg-light mb-3 fixed-top">
         <Link className="navbar-brand" to="/">
           <img alt="" src={logo} className="mr-4" />

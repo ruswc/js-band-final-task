@@ -10,6 +10,7 @@
     "jsx-a11y",
     "prettier"
   ],
+  "ignorePatterns": ["*test.js", "serviceWorker.js", "node_modules/"],
   "rules": {
     "semi": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

@@ -9,8 +9,6 @@ const client = axios.create({
   headers: { "Content-Type": "application/json" }
 })
 
-console.dir(client)
-
 client.interceptors.request.use(
   config => {
     const tempConfig = { ...config }

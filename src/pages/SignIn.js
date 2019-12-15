@@ -29,6 +29,8 @@ class SignIn extends Component {
       return this.setState(() => ({ errorMessage: "Field is not valid" }))
 
     onSubmit({ username })
+
+    return null
   }
 
   render() {

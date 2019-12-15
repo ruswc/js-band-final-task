@@ -50,7 +50,7 @@ Button.defaultProps = {
   to: "",
   value: "",
   disabled: false,
-  className: '',
+  className: "",
   onClick: e => e
 }
 

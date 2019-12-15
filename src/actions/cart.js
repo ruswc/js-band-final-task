@@ -24,6 +24,7 @@ export const purchase = ({ books = [] }) => async dispatch => {
     const {
       data: { message }
     } = await services.purchase({ books })
+    // eslint-disable-next-line no-alert
     alert(message)
     dispatch(purchaseSuccess())
   } catch (errors) {
