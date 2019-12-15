@@ -1,13 +1,16 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/no-named-as-default-member */
 import { handleActions } from "redux-actions"
-import { addToCart } from "../actions/cart"
+import actions from "actions/cart"
 
 const initialState = {
+  isLoading: false,
   items: {}
 }
 
 export default handleActions(
   {
-    [addToCart]: (state, { payload: { id, count, ...rest } }) => ({
+    [actions.addToCart]: (state, { payload: { id, count, ...rest } }) => ({
       ...state,
       items: {
         ...state.items,
@@ -18,7 +21,14 @@ export default handleActions(
             }
           : { count, ...rest }
       }
-    })
+    }),
+
+    [actions.purchaseRequest]: (state, { payload }) => ({
+      ...state,
+      isLoading: payload
+    }),
+
+    [actions.purchaseSuccess]: () => initialState
   },
   initialState
 )

@@ -1,7 +1,14 @@
+/* eslint-disable import/no-cycle */
 import { handleActions } from "redux-actions"
-import { setAuthRequest, setAuthSuccess, setAuthFailure } from "../actions/auth"
+import {
+  signOut,
+  setAuthRequest,
+  setAuthSuccess,
+  setAuthFailure
+} from "actions/auth"
 
 const initialState = {
+  isAuthenticated: false,
   isLoading: false,
   errors: {},
   user: {}
@@ -16,6 +23,7 @@ export default handleActions(
 
     [setAuthSuccess]: (state, { payload }) => ({
       ...state,
+      isAuthenticated: true,
       user: payload,
       errors: {}
     }),
@@ -23,7 +31,9 @@ export default handleActions(
     [setAuthFailure]: (state, { payload }) => ({
       ...state,
       errors: payload
-    })
+    }),
+
+    [signOut]: () => initialState
   },
   initialState
 )

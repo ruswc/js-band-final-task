@@ -1,0 +1,25 @@
+language: node_js
+
+node_js:
+  - lts/*
+
+install: npm install
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm run lint
+  - npm run build
+
+deploy:
+  provider: pages
+  edge: true
+  skip_cleanup: true
+  github_token: $JS_BAND_FINAL_TASK
+  local_dir: build
+  keep_history: true
+  on:
+    branch: master
+

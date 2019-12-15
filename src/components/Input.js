@@ -1,7 +1,16 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Input = ({ type, value, placeholder, disabled, min, max, onChange }) => {
+const Input = ({
+  type,
+  value,
+  name,
+  placeholder,
+  disabled,
+  min,
+  max,
+  onChange
+}) => {
   const handleChange = e => {
     if ((max && e.target.value > max) || (min && e.target.value < min)) return
 
@@ -11,6 +20,7 @@ const Input = ({ type, value, placeholder, disabled, min, max, onChange }) => {
     <input
       type={type}
       value={value}
+      name={name}
       placeholder={placeholder}
       min={min}
       max={max}
@@ -24,6 +34,7 @@ const Input = ({ type, value, placeholder, disabled, min, max, onChange }) => {
 Input.defaultProps = {
   type: "text",
   value: "",
+  name: "",
   placeholder: "",
   min: 0,
   max: 1000,
@@ -32,6 +43,7 @@ Input.defaultProps = {
 
 Input.propTypes = {
   type: PropTypes.string,
+  name: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   placeholder: PropTypes.string,
   min: PropTypes.number,

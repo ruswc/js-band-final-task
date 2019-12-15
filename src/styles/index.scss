@@ -5,3 +5,37 @@ body,
 #root {
   height: 100%;
 }
+
+body {
+  padding-top: 71px;
+}
+
+.card {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+button,
+a.btn {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+  &:hover {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+input[type=number] {
+  min-width: 60px;
+  max-width: 80px;
+}
+
+.navbar {
+  background-color: #e6e6e6 !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+a.navbar-brand{
+  img {
+    max-height: 30px;
+    fill: aquamarine;
+  }
+}
