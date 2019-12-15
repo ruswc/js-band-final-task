@@ -12,7 +12,7 @@ const Form = ({ children, onSubmit }) => {
     onSubmit(e)
   }
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form w-100" onSubmit={handleSubmit}>
       {children}
     </form>
   )

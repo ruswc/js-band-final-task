@@ -14,11 +14,13 @@ const Button = ({
   type,
   color,
   block,
+  className,
   onClick
 }) => {
   const classes = classNames("btn", {
     "btn-block": block,
-    [`btn-${color}`]: color
+    [`btn-${color}`]: color,
+    [className]: className
   })
 
   return to ? (
@@ -48,6 +50,7 @@ Button.defaultProps = {
   to: "",
   value: "",
   disabled: false,
+  className: '',
   onClick: e => e
 }
 
@@ -59,6 +62,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
   to: PropTypes.string,
   value: PropTypes.string,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   onClick: PropTypes.func
 }

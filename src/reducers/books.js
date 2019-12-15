@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { handleActions, combineActions } from "redux-actions"
 import {
   fetchBooksRequest,
@@ -6,7 +7,7 @@ import {
   fetchSingleBookRequest,
   fetchSingleBookSuccess,
   fetchSingleBookFailure
-} from "../actions/books"
+} from "actions/books"
 
 const initialState = {
   isLoading: true,

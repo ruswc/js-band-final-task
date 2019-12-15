@@ -1,11 +1,15 @@
 import { createAction } from "redux-actions"
-import axios from "axios"
+import services from "services/auth"
+import storage from "helpers/storage"
+import client from "helpers/api"
 
 import {
+  AUTH_TOKEN_KEY,
   SET_AUTH_REQUEST,
   SET_AUTH_SUCCESS,
-  SET_AUTH_FAILURE
-} from "../types/auth"
+  SET_AUTH_FAILURE,
+  SIGN_OUT
+} from "types/auth"
 
 export const setAuthRequest = createAction(SET_AUTH_REQUEST)
 export const setAuthSuccess = createAction(SET_AUTH_SUCCESS)
@@ -17,27 +21,27 @@ export const signIn = value => async dispatch => {
   try {
     const {
       data: { token, avatar, username }
-    } = await axios({
-      url: "https://js-band-api.glitch.me/signin",
-      method: "POST",
-      data: value
-    })
+    } = await services.signIn(value)
 
     if (token) {
-      localStorage.setItem("token", token)
-      axios.defaults.headers.common = { Authorization: token }
+      storage.setItem(AUTH_TOKEN_KEY, token)
+      client.setAuthHeader(token)
     }
 
     dispatch(setAuthSuccess({ username, avatar }))
   } catch (errors) {
-    dispatch(setAuthFailure(errors.response.data))
+    const { response: { data } = {} } = errors
+    dispatch(setAuthFailure(data))
   } finally {
     dispatch(setAuthRequest(false))
   }
 }
 
+export const signOut = createAction(SIGN_OUT)
+
 export default {
   signIn,
+  signOut,
   setAuthRequest,
   setAuthSuccess,
   setAuthFailure

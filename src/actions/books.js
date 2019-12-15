@@ -1,5 +1,5 @@
 import { createAction } from "redux-actions"
-import axios from "axios"
+import services from "services/books"
 
 import {
   FETCH_BOOKS_REQUEST,
@@ -8,7 +8,7 @@ import {
   FETCH_SINGLE_BOOK_REQUEST,
   FETCH_SINGLE_BOOK_SUCCESS,
   FETCH_SINGLE_BOOK_FAILURE
-} from "../types/books"
+} from "types/books"
 
 export const fetchBooksRequest = createAction(FETCH_BOOKS_REQUEST)
 export const fetchBooksSuccess = createAction(FETCH_BOOKS_SUCCESS)
@@ -16,10 +16,7 @@ export const fetchBooksFailure = createAction(FETCH_BOOKS_FAILURE)
 
 export const fetchBooks = () => async dispatch => {
   try {
-    const { data } = await axios({
-      url: "https://js-band-api.glitch.me/books",
-      method: "GET"
-    })
+    const { data } = await services.fetchData()
 
     dispatch(fetchBooksSuccess(data))
   } catch (errors) {
@@ -35,10 +32,7 @@ export const fetchSingleBookFailure = createAction(FETCH_SINGLE_BOOK_FAILURE)
 
 export const fetchSingleBook = id => async dispatch => {
   try {
-    const { data } = await axios({
-      url: `https://js-band-api.glitch.me/books/${id}`,
-      method: "GET"
-    })
+    const { data } = await services.fetchSingle(id)
 
     dispatch(fetchSingleBookSuccess(data))
   } catch (errors) {

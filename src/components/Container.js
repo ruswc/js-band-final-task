@@ -9,6 +9,13 @@ const Row = ({ children, className }) => {
   return <div className={classes}>{children}</div>
 }
 
+const Col = ({ children, className }) => {
+  const classes = classNames("col", {
+    [className]: className
+  })
+  return <div className={classes}>{children}</div>
+}
+
 const Container = ({ children, fluid, className }) => {
   const classes = classNames("container", {
     "container-fluid": fluid,
@@ -19,6 +26,7 @@ const Container = ({ children, fluid, className }) => {
 }
 
 Container.Row = Row
+Container.Col = Col
 
 Container.defaultProps = {
   children: null,
@@ -38,6 +46,16 @@ Row.defaultProps = {
 }
 
 Row.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string
+}
+
+Col.defaultProps = {
+  children: null,
+  className: ""
+}
+
+Col.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string
 }
