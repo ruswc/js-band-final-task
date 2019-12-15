@@ -129,7 +129,10 @@ class Books extends Component {
           <Container.Row>
             {filteredItems.length !== 0 ? (
               filteredItems.map(item => (
-                <div key={item.id} className="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
+                <div
+                  key={item.id}
+                  className="col-12 col-md-6 col-lg-4 col-xl-3 mb-5"
+                >
                   <Card className="h-100">
                     <Card.Cover src={item.cover} alt={item.title} />
                     <Card.Body>
@@ -138,7 +141,9 @@ class Books extends Component {
                     </Card.Body>
                     <Card.Footer>
                       <Card.Row className="align-items-center">
-                        <Card.Col className="col-3 text-nowrap">${item.price}</Card.Col>
+                        <Card.Col className="col-3 text-nowrap">
+                          ${item.price}
+                        </Card.Col>
                         <Card.Col className="text-right col-9">
                           <Button
                             color="primary"
